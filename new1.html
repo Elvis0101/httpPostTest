@@ -1,0 +1,30 @@
+<html lang="en">
+
+<meta charset="utf-8">
+<title>Page Title</title>
+
+</body>
+<body>
+    <script>
+		async function launchWhatsAppSignup() {
+			const data = {token: '987654321'};
+
+fetch("https://us-central1-wtsapitest.cloudfunctions.net/storeAccessToken", {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'}, 
+  body: JSON.stringify(data),
+}).then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error, status = ${response.status}`);
+        }
+      })
+      .catch((error) => {
+        var p = document.createElement("p");
+        p.appendChild(document.createTextNode(`Error: ${error.message}`));
+      })
+
+		}
+	</script>
+	<button onclick="launchWhatsAppSignup()"
+        style="background-color: #1877f2; border: 0; border-radius: 4px; color: #fff; cursor: pointer; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: bold; height: 40px; padding: 0 24px;">Test</button>
+</html>
